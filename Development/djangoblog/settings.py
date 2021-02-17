@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'djangoblog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'school_db',
+        'NAME': 'education_db',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',

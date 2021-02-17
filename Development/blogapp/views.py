@@ -39,29 +39,19 @@ def index(request):
         return render(request, "blogapp/index.html",context)
 
 
-
-def create_user(request, class_name):
-        classes_name       = class_name.replace('-', ' ')
-        
-        subjects           = models.subjectchapter.objects.filter(classsubject_id__classes_id__name=classes_name,status=True).order_by("classsubject_id__classes_id__name")
-
-        if subjects:
-            sub_name        = str(subjects[0].classsubject.subject.name).replace(' ', '-')
-            return redirect("/"+class_name+"/"+sub_name)
-        else:
-            return redirect("/")
-
-
 def classsubject(request, class_name):
-        classes_name       = class_name.replace('-', ' ')
-        
-        subjects           = models.subjectchapter.objects.filter(classsubject_id__classes_id__name=classes_name,status=True).order_by("classsubject_id__classes_id__name")
+    class_name        = class_name.replace('-', ' ')
+    subjects          = models.classsubject.objects.filter(classes_id__name=class_name,status=True).order_by("id")    
+    
+    
+    context={
+        'subjects'    : subjects,
+       
+    }
+    return render(request, "blogapp/subject.html",context)
 
-        if subjects:
-            sub_name        = str(subjects[0].classsubject.subject.name).replace(' ', '-')
-            return redirect("/"+class_name+"/"+sub_name)
-        else:
-            return redirect("/")
+
+
 
 
 def subjectquestion(request, class_name, sub_name):
@@ -76,7 +66,7 @@ def subjectquestion(request, class_name, sub_name):
             'subjects'    : subjects,
             'subjects_chapter'    : subjects_chapter,
     }
-        return render(request, "blogapp/subject.html",context)
+        return render(request, "blogapp/chapter.html",context)
 
 
 def question_list(request, class_name, sub_name, chapter_name):
