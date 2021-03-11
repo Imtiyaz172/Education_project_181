@@ -1,82 +1,102 @@
-{% extends 'blogapp/admin/base.html' %}
+{% extends 'Blogapp/admin/base.html' %}
 {% load staticfiles %}
 {% load data_load %}
-{% block content %}
+{% block content %}	
+	<!-- Breadcomb area Start-->
+    <style>
+    .pt-100 {
+	padding-top: 100px;
+}
+.pb-100 {
+	padding-bottom: 100px;
+}
+.services-area {
+  background-color: #f6f6f6;
+}
+.section-title {
+  margin-bottom: 60px;
+}
+.section-title p {
+	color: #777;
+	font-size: 16px;
+}
+.section-title h4 {
+	text-transform: capitalize;
+	font-size: 40px;
+	position: relative;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	font-weight: 600;
+}
+.section-title h4:before {
+	position: absolute;
+	content: "";
+	width: 60px;
+	height: 2px;
+	background-color: #ff3636;
+	bottom: 0;
+	left: 50%;
+	margin-left: -30px;
+}
+.section-title h4:after {
+	position: absolute;
+	background-color: #ff3636;
+	content: "";
+	width: 10px;
+	height: 10px;
+	bottom: -4px;
+	left: 50%;
+	margin-left: -5px;
+	border-radius: 50%;
+}
+.single-service {
+	border: 1px solid #eee;
+	padding: 30px 10px;
+	position: relative;
+	text-align: center;
+	margin-bottom: 30px;
+}
+.single-service i.fa {
+  width: 60px;
+  height: 60px;
+  background-color: #ff3636;
+  font-size: 25px;
+  color: #fff;
+  line-height: 60px;
+  text-align:center;
+  margin-bottom:20px;
+}
+.single-service i.fa {
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+.single-service:hover i.fa {
+	border-radius: 50%;
+}
+.single-service h4 {
+	text-transform: capitalize;
+	font-size: 22px;
+	margin-bottom: 10px;
+	font-weight: 500;
+}
 
+    </style>
+	<!-- Breadcomb area Start-->
 
-
-       <div class="single-pro-review-area mt-t-30 mg-b-15">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                       <div class="profile-info-inner">
-                        
-                            <div class="profile-img">
-                                {% if user_profile.user_image %}
-                                    <center><img src="/static/blogapp/media/{{user_profile.user_image}}" alt="" />
-                                {% else %}
-                                    <center> <img src="{% static 'blogapp/admin/img/demo-user.png' %}" alt="" />
-                                {% endif %}
-                            </div>
-                            <div class="profile-details-hr">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                                        <div class="address-hr">
-                                            <p><b>Name</b><br /> {{user_profile.name}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                                        <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
-                                            <p><b>Class</b><br /> {{user_profile.classes}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                                        <div class="address-hr">
-                                            <p><b>Email ID</b><br /> {{user_profile.email}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                                        <div class="address-hr tb-sm-res-d-n dps-tb-ntn">
-                                            <p><b>Phone</b><br /> {{user_profile.mobile}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="address-hr">
-                                            <p><b>Address</b><br />{{user_profile.address}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% comment %} <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="address-hr">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <h3>500</h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="address-hr">
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <h3>900</h3>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="address-hr">
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                            <h3>600</h3>
-                                        </div>
-                                    </div>
-                                </div> {% endcomment %}
-                            </div>
-                        </div>
-                    </div>
- 
-                    </div>
-                </div>
-            </div>
-        </div>
-
-{% endblock %}
+	<!-- Breadcomb area End-->
+    <!-- Inbox area Start-->
+     <section class="services-area pt-100 pb-70" id="services">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-8 mx-auto text-center">
+					<div class="section-title">
+						<h4>Welcome</h4>
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	  </section>
+    <!-- Inbox area End-->
+ {% endblock %}

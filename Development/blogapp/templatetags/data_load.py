@@ -16,7 +16,7 @@ def owner(request):
 
 @register.filter(name='classesreg')
 def classes(request):
-    classes  = models.classes.objects.filter(status = True).order_by("-id")
+    classes  = models.classes.objects.filter(status = True).order_by("id")
     return classes
 
 @register.filter(name='user_reg')

@@ -166,7 +166,7 @@ class question(models.Model):
 class user_reg(models.Model):
     name               = models.CharField(max_length=100)
     email              = models.EmailField(max_length=80, blank=True)
-    mobile             = models.CharField(max_length=18)
+    mobile             = models.CharField(max_length=18, blank=True)
     user_image         = models.ImageField(upload_to = "user_image/", blank = True)
     password           = models.CharField(max_length=100)
     address            = models.TextField(blank=True)

@@ -1,0 +1,217 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    {% load static %}
+    {% load data_load %}
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard One | Notika - Notika Admin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/bootstrap.min.css' %}">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/font-awesome.min.css' %}">
+    <!-- font awesome CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admincss/font-awesome.min.css' %}">
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static  'admin/css/owl.theme.css' %}">
+    <link rel="stylesheet" href="{% static  'admin/css/owl.transitions.css' %}">
+    <!-- meanmenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/meanmenu/meanmenu.min.css' %}">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/animate.css' %}">
+    <!-- summernote CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admincss/summernote/summernote.css' %}">
+    <!-- Range Slider CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admincss/themesaller-forms.css' %}">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/normalize.css' %}">
+    <!-- mCustomScrollbar CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/scrollbar/jquery.mCustomScrollbar.min.css' %}">
+    <!-- jvectormap CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/jvectormap/jquery-jvectormap-2.0.3.css' %}">
+    <!-- notika icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/notika-custom-icon.css' %}">
+    <!-- bootstrap select CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/bootstrap-select/bootstrap-select.css' %}">
+    <!-- datapicker CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/datapicker/datepicker3.css' %}">
+    <!-- Color Picker CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/color-picker/farbtastic.css' %}">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/chosen/chosen.css' %}">
+    <!-- notification CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/notification/notification.css' %}">
+    <!-- dropzone CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/dropzone/dropzone.css' %}">
+    <!-- wave CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/wave/waves.min.css' %}">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/main.css' %}">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/style.css' %}">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static  'admin/css/responsive.css' %}">
+    <!-- modernizr JS
+		============================================ -->
+    <script src="{% static  'admin/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+<style>
+.box {
+    width: 500px;
+    margin: 200px 350px;
+}
+
+.shape1{
+    position: relative;
+    height: 160px;
+    width: 150px;
+    background-color: #0074d9;
+    border-radius: 80px;
+    float: left;
+    margin-right: -50px;
+}
+.shape2 {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    background-color: #0074d9;
+    border-radius: 80px;
+    margin-top: -30px;
+    float: left;
+}
+.shape3 {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    background-color: #0074d9;
+    border-radius: 80px;
+    margin-top: -30px;
+    float: left;
+    margin-left: -31px;
+}
+.shape4 {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    background-color: #0074d9;
+    border-radius: 80px;
+    margin-top: -25px;
+    float: left;
+    margin-left: -32px;
+}
+.shape5 {
+    position: relative;
+    height: 190px;
+    width: 150px;
+    background-color: #0074d9;
+    border-radius: 80px;
+    float: left;
+    margin-right: -48px;
+    margin-left: -32px;
+    margin-top: -30px;
+}
+.shape6 {
+    position: relative;
+    height: 180px;
+    width: 150px;
+    background-color: #0074d9;
+    border-radius: 80px;
+    float: left;
+    margin-right: -20px;
+    margin-top: -35px;
+}
+.shape7 {
+    position: relative;
+    height: 210px;
+    width: 150px;
+    background-color: #0074d9;
+    border-radius: 80px;
+    float: left;
+    margin-right: -20px;
+    margin-top: -57px;
+}
+.float {
+    position: absolute;
+    z-index: 2;
+}
+
+.form {
+    margin-left: 145px;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-12">
+                <div class="box">
+                <h1>
+                        Login
+                    </h1>
+                    <div class="shape1"></div>
+                    <div class="shape2"></div>
+                    <div class="shape3"></div>
+                    <div class="shape4"></div>
+                    <div class="shape5"></div>
+                    <div class="shape6"></div>
+                    <div class="shape7"></div>
+                    <div class="float">
+                        <form class="form" action="" method="POST">{% csrf_token %}
+                            <div class="form-group">
+                                <label for="username" class="text-white">email:</label><br>
+                                <input type="text" name="email" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-white">Password:</label><br>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                                <a href="/user-reg/"> <input type="button" name="submit" class="btn btn-info btn-md" value="Register" style="background:red"></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

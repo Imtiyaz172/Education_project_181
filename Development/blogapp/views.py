@@ -222,7 +222,7 @@ def question(request, classes_name, sub_name, chapter_name,type_name, id):
                 #         models.user_hit_count.objects.filter(user_reg_id = int(request.session['id']), question_id = questions.id).update(star = F('star')+1)
                     models.user_answer.objects.filter(id = user_ans.id).update(is_correct_ans = True )
                     messages.success(request, "আপনার উত্তরটি সঠিক হয়েছে.")
-                    return redirect("/"+classes_name.replace(' ', '-')+"/"+sub_name.replace(' ', '-')+"/"+chapter_name.replace(' ', '-')+"/"+type_name.replace(' ', '-')+"/"+str(valid_profiles_list[0]))
+                    return redirect("/list"+"/"+classes_name.replace(' ', '-')+"/"+sub_name.replace(' ', '-')+"/"+chapter_name.replace(' ', '-')+"/"+type_name.replace(' ', '-')+"/"+str(valid_profiles_list[0]))
                    
 
                 elif not cheak_ans:
@@ -255,14 +255,14 @@ def user_reg(request):
     if request.method=="POST":
         name            = request.POST['name']
         email           = request.POST['email']
-        mobile          = request.POST['mobile']
+        
         password        = request.POST['password']
         new_md5_obj     = hashlib.md5(password.encode())
         new_enc_pass    = new_md5_obj.hexdigest()
         cheak_email     = models.user_reg.objects.filter(email = email)
 
         if not cheak_email:
-            models.user_reg.objects.create(name = name, email = email, mobile = mobile, password = new_enc_pass)
+            models.user_reg.objects.create(name = name, email = email, password = new_enc_pass)
             messages.success(request, "আপনার রেজিস্ট্রেশন সফল হয়েছে । আপনার একাউন্টে লগ-ইন করুন")
             return redirect('/login/')
         else:
@@ -270,7 +270,7 @@ def user_reg(request):
             return redirect('/login/')
     else:
         messages.warning(request, "")
-    return render(request, "blogapp/user_reg.html")
+    return render(request, "blogapp/admin/regester.html")
 
 
 
@@ -287,7 +287,7 @@ def login(request):
             request.session['id'] = user[0].id
             return redirect("/dashboard/")
     
-    return render(request, "blogapp/login.html")
+    return render(request, "blogapp/admin/login.html")
 
 def logout(request):
     request.session['email'] = False
@@ -333,7 +333,7 @@ def history (request):
     context={
         'user_history'    : user_history,
 }
-    return render(request, "blogapp/admin/history.html",context)
+    return render(request, "blogapp/admin/history1.html",context)
 
 
 def subjectresult(request):
@@ -371,7 +371,7 @@ def subjectlist(request, class_name):
     context={
         'subjectsre'    : subjectsre,
     }
-    return render(request, "blogapp/admin/subjectlist.html",context)
+    return render(request, "blogapp/admin/subject_list.html",context)
         
 def subjectlistimprovement(request, class_name):
     class_name        = class_name.replace('-', ' ')

@@ -1,0 +1,90 @@
+{% extends 'blogapp/admin/base.html' %}
+{% load staticfiles %}
+{% load data_load %}
+{% block content %}	
+	<!-- Breadcomb area Start-->
+
+	<!-- Breadcomb area End-->
+    <!-- Data Table area Start-->
+    <div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        <div class="basic-tb-hd">
+                            <h2>Basic Example</h2>
+                            <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Answer No</th>
+                                        <th>Question</th>
+                                        <th>Class</th>
+                                        <th>Subject</th>
+                                        <th>Chapter</th>
+                                        <th>Answered</th>
+                                        <th>Wrong/Right</th>
+                                        <th>Take Time</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for table in user_history %}
+                                    <tr>
+                                        <td>{{ forloop.revcounter}}</td>
+                                        <td>{{table.question}}</td>
+                                        <td>{{table.question.subjectchapter.classsubject.classes}}</td>
+                                        <td>{{table.question.subjectchapter.classsubject.subject}}</td>
+                                        <td>{{table.question.subjectchapter.chapter.name}}</td>
+                                    {% if table.text_choose %}
+                                        <td>{{table.text_choose}}</td>
+                                    {% else %}
+                                        <td>
+                                        {% if table.ans_choose_op_1 %}
+                                            {{table.question.text_op_1}}
+                                        {% endif %}
+                                        {% if table.ans_choose_op_2 %}
+                                                {{table.question.text_op_2}}
+                                        {% endif %}
+                                        {% if table.ans_choose_op_3 %}
+                                                {{table.question.text_op_3}}
+                                        {% endif %}
+                                        {% if table.ans_choose_op_4 %}
+                                            {{table.question.text_op_4}}
+                                        {% endif %}
+                                        </td>
+                                    {% endif %}
+                                        
+                                    {% if table.is_correct_ans is True %}
+                                        <td class="datatable-ct" ><i class="fa fa-check"style="color:green"></i>
+                                        </td>
+                                    {% else %}
+                                        <td class="datatable-ct"><i class="fa fa-times"style="color:red"></i>
+                                        </td>
+                                    {% endif %}
+                                         <td>{{table.taketime}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                               
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Total</th>
+                                        <th></th>
+                                        <th>{{ tatal_amount|floatformat:"2" }} </th>
+                                        
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

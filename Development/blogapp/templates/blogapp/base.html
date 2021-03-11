@@ -23,9 +23,59 @@
 
         <!-- Template Stylesheet -->
         <link href="{% static 'blogapp/css/style.css' %}" rel="stylesheet">
+
+<style>
+
+
+
+.kudos-wrap {
+      
+    margin-bottom: 30px;
+    padding:25px 15px;
+    
+}
+
+
+
+
+.kudos-wrap li {
+  display: inline-block;
+}
+
+ul.chec-radio {
+    margin: 15px;
+}
+ul.chec-radio li.pz {
+    display: inline;
+}
+
+.chec-radio .radio-inline .clab {
+    cursor: pointer;
+    background: #e7e7e7;
+    padding: 7px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    position: relative;
+    height: 34px;
+    float: left;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.chec-radio label.radio-inline input[type="radio"] {
+    display: none;
+}
+.chec-radio label.radio-inline input[type="radio"]:checked+div {
+    color: rgb(255, 255, 255);
+    background-color: #673AB7;
+}
+
+
+</style>
     </head>
 
-    <body>
+    <body onload="start()">
         <div class="wrapper">
             <!-- Header Start -->
             <div class="header home">
@@ -75,7 +125,11 @@
                                                 <a href="#" class="dropdown-item">Sub Item 2</a>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn">Get A Quote</a>
+                                        {% if request.session.email %}
+                                            <a href="/dashboard/" class="btn">My Panel</a>
+                                        {% else %}
+                                            <a href="/login/" class="btn">Login</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
