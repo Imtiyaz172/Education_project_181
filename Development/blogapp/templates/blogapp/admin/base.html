@@ -6,7 +6,7 @@
     {% load data_load %}
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard One | Notika - Notika Admin Template</title>
+    <title>User Panel</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -96,14 +96,16 @@
     <div class="header-top-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12">
                     <div class="logo-area">
                         <a href="#"><img src="img/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
                     <div class="header-top-menu">
                         
+                            <a href="/logout/" class="btn" style="color:white; background:red; margin-top:7px">Logout</a>
+                      
                     </div>
                 </div>
             </div>
@@ -220,7 +222,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a  href="/dashboard/"><i class="notika-icon notika-house"></i> Home</a></li>
+                        <li><a  href="/"><i class="notika-icon notika-house"></i> Home</a></li>
                         <li><a href="/user-history/"><i class="notika-icon notika-support"></i> History</a></li>
                         <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Result</a></li>
                         <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-bar-chart"></i> improvement</a></li>
@@ -239,7 +241,7 @@
                         <div id="Interface" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                             {% for classes in classes|classesreg %}
-                              <li><a href="/{{classes.name|str2url}}">{{classes.name}}</a></li>
+                              <li><a href="/sub-result/{{classes.name|str2url}}">{{classes.name}}</a></li>
                             {% endfor %}
                                 
                                 
@@ -248,7 +250,7 @@
                         <div id="Charts" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                               {% for classes in classes|classesreg %}
-                                <li><a href="/{{classes.name|str2url}}">{{classes.name}}</a></li>
+                                <li><a href="/sub-list-improvement/{{classes.name|str2url}}">{{classes.name}}</a></li>
                               {% endfor %}
                             </ul>
                         </div>

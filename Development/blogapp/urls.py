@@ -16,7 +16,6 @@ urlpatterns = [
     #........ Admin Urls..........
     path('dashboard/', views.dashboard),
     path('user-history/', views.history),
-    path('sub-list/', views.subjectresult),
     path('sub-result/<str:class_name>/',views.subjectlist),
     path('sub-result/<str:class_name>/<str:sub_name>/',views.subjectperform),
     path('class-list-improvement/', views.classlistimprove),

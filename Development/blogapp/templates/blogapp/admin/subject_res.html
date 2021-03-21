@@ -20,18 +20,19 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th> No</th>
-                                        <th>Chapter</th>
+                                        <th>No</th>
+                                        <th>Subject Name</th>
                                         
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for table in user_history %}
+                                    {% for table in subjectsre %}
                                     <tr>
                                         <td>{{ forloop.revcounter}}</td>
-                                        <td>{{table.question}}</td>
+                                        <td><a href="/sub-result/{{table.classes.name|str2url}}/{{table.subject.name|str2url}}/">{{table.subject.name}}</a></td>
                                         
+                                    
                                     </tr>
                                     {% endfor %}
                                     
@@ -39,9 +40,8 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Total</th>
-                                        <th></th>
-                                        <th>{{ tatal_amount|floatformat:"2" }} </th>
+                                        <th>Subject No</th>
+                                        <th>Subject Name</th>
                                         
                                     </tr>
                                 </tfoot>
