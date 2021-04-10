@@ -23,8 +23,17 @@
 
         <!-- Template Stylesheet -->
         <link href="{% static 'blogapp/css/style.css' %}" rel="stylesheet">
+        {% comment %} <link href="{% static 'blogapp/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'blogapp/css/bootstrap.min.js' %}" rel="stylesheet">
+        <link href="{% static 'blogapp/css/popper.js' %}" rel="stylesheet"> {% endcomment %}
 
 <style>
+
+ul
+{
+	list-style: none;
+	margin-bottom: 0px;
+}
 
 
 
@@ -36,19 +45,81 @@
 }
 
 
-
+.kudos-wrap ul {
+  list-style-type: none;
+}
 
 .kudos-wrap li {
   display: inline-block;
 }
 
+.kudos-wrap input[type="checkbox"][id^="cb"] {
+  display: none;
+}
+.kudos-wrap input[type="radio"][id^="exampleRadios"] {
+  display: none;
+}
+
+.kudos-wrap label {
+  border: 1px solid #2196F3;
+  padding: 10px;
+  display: block;
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.kudos-wrap label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%; 
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+.kudos-wrap label img {
+  height: 100px;
+  width: 100px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+.kudos-wrap :checked + label {
+  border-color: #673AB7;
+}
+
+.kudos-wrap :checked + label:before {
+    content: "✓";
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #673AB7;
+    transform: scale(1);
+}
+.kudos-wrap qtoform{
+	margin-top: 80px;
+}
 ul.chec-radio {
     margin: 15px;
 }
 ul.chec-radio li.pz {
     display: inline;
 }
-
+.chec-radio label.radio-inline input[type="checkbox"] {
+    display: none;
+}
+.chec-radio label.radio-inline input[type="checkbox"]:checked+div {
+    color: rgb(255, 255, 255);
+    background-color: green;
+}
 .chec-radio .radio-inline .clab {
     cursor: pointer;
     background: #e7e7e7;
@@ -62,7 +133,11 @@ ul.chec-radio li.pz {
     margin: 0;
     margin-bottom: 5px;
 }
-
+.chec-radio label.radio-inline input[type="checkbox"]:checked+div:before {
+    
+    margin-right: 5px;
+    font-family: 'Glyphicons Halflings';
+}
 .chec-radio label.radio-inline input[type="radio"] {
     display: none;
 }
@@ -70,7 +145,94 @@ ul.chec-radio li.pz {
     color: rgb(255, 255, 255);
     background-color: #673AB7;
 }
+.chec-radio label.radio-inline input[type="radio"]:checked+div:before {
+    
+    margin-right: 5px;
+    font-family: 'Glyphicons Halflings';
+}
+.kudos-wrap2 ul {
+	list-style-type: none;
+  }
+  
+  .kudos-wrap2  li {
+	display: inline-block;
+  }
+  
+  .kudos-wrap2 input[type="radio"][id^="cb"] {
+	display: none;
+  }
+  
+  .kudos-wrap2 label {
+	border: 1px solid #fff;
+	padding: 10px;
+	border-radius: 50%;
+	display: block;
+	position: relative;
+	margin: 10px;
+	cursor: pointer;
+  }
+  
+  .kudos-wrap2 label:before {
+	background-color: rgba(16, 65, 99, 0.32 );
+	text-align:center;
+	color: white;
+	content: " ";
+	display: block;
+	border-radius: 50%;
+  /*   border: 1px solid grey; */
+	position: absolute;
+	top:10px;
+	left: 10px;
+	z-index:1;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	transition-duration: 0.4s;
+	transform: scale(0);
+  }
+  
+  .kudos-wrap2 label img {
+	height: 100px;
+	width: 100px;
+	transition-duration: 0.1s;
+	transform-origin: 50% 50%;
+	border-radius: 50%;
+  }
+  
+  .kudos-wrap2:checked + label {
+	border-color: rgb(224, 29, 29);
+  }
+  
+  .kudos-wrap2:checked + label:before {
+	content: "✓";
+	transform: scale(1.1);
+  }
+  
+  .kudos-wrap2:checked + label img {
+	transform: scale(1.2);
+	box-shadow: 0 0 3px #333;
+	z-index: -1;
+  }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 </style>
     </head>
@@ -118,8 +280,8 @@ ul.chec-radio li.pz {
                                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                                     <div class="navbar-nav ml-auto">
                                         <a href="/" class="nav-item nav-link active">Home</a>
-                                        <a href="about.html" class="nav-item nav-link">About</a>
-                                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                                        <a href="/about/" class="nav-item nav-link">About</a>
+                                        <a href="/contact/" class="nav-item nav-link">Contact</a>
                                         {% comment %} <div class="nav-item dropdown">
                                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                                             <div class="dropdown-menu">
@@ -234,5 +396,19 @@ ul.chec-radio li.pz {
 
         <!-- Template Javascript -->
         <script src="{% static 'blogapp/js/main.js' %}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+            $("input[type=radio]").prop("checked", false);
+            $("input[type=radio]:first").prop("checked", false);
+
+            $("input[type=radio]").click(function(event) {
+                $("input[type=radio]").prop("checked", false);
+                $(this).prop("checked", true);
+
+                //event.preventDefault();
+            });
+            });
+	</script>
     </body>
 </html>

@@ -111,3 +111,10 @@ class inspire_regModel(admin.ModelAdmin):
 
 admin.site.register(models.inspire_reg, inspire_regModel)
 
+
+class contactModel(admin.ModelAdmin):
+    list_display    = ["__str__","name", "email","time"]
+    search_fields   = ['name','email']
+    list_per_page   = 30
+    
+admin.site.register(models.contact, contactModel)

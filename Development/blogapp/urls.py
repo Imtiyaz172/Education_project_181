@@ -11,6 +11,8 @@ urlpatterns = [
     path('user-reg/', views.user_reg),
     path('login/', views.login),
     path('logout/',views.logout),
+    path('contact/',views.contact, name="contact"),
+    path('about/',views.about, name="contact"),
 
     
     #........ Admin Urls..........

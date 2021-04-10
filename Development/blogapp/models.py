@@ -26,6 +26,23 @@ class about_us(models.Model):
         verbose_name_plural = 'about_us' 
 
 
+
+
+class contact(models.Model):
+    name          = models.CharField(max_length=100,blank= True)
+    email          = models.CharField(max_length=100,blank= True)
+    massage          = models.TextField(blank= True)
+    time          = models.DateTimeField(auto_now_add = True)
+    status        = models.BooleanField(default = True)
+
+    def __str__(self):
+        return self.name     
+    class Meta:
+        verbose_name = 'contact'
+        verbose_name_plural = 'contact' 
+
+
+
 class owner(models.Model):
     name        = models.CharField(max_length=100)
     designation = models.CharField(max_length=76,blank=True)

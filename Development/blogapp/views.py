@@ -73,6 +73,7 @@ def question_list(request, class_name, sub_name, chapter_name):
     classes_name        = class_name.replace('-', ' ')
     sub_name            = sub_name.replace('-', ' ')
     chapter_name        = chapter_name.replace('-', ' ')
+    questions_contant_video   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first()
     questions_list      = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).order_by("subjectchapter")
     questions_contant   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first() 
 
@@ -114,7 +115,7 @@ def question_list(request, class_name, sub_name, chapter_name):
     except:
         pass
     context={
-
+        'questions_contant_video'    : questions_contant_video,
         'questions_list'    : questions_list,
         'questions_contant'    : questions_contant,
 
@@ -523,3 +524,21 @@ def edit_profile (request):
         
         return redirect('/dashboard/')
     return render(request, "blogapp/admin/edit_profile.html",context)
+
+
+
+
+
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        massage = request.POST.get('massage')
+        models.contact.objects.create(email = email , name = name, massage = massage)
+        messages.success(request, "Thankyou for send massage we will give you feedack in your mail")   
+
+    return render(request,'blogapp/contact.html')
+
+def about(request):  
+
+    return render(request,'blogapp/about.html')
