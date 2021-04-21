@@ -74,49 +74,52 @@ def question_list(request, class_name, sub_name, chapter_name):
     sub_name            = sub_name.replace('-', ' ')
     chapter_name        = chapter_name.replace('-', ' ')
     questions_contant_video   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first()
-    questions_list      = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).order_by("subjectchapter")
+    questions_list      = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,ques_level = "Easy",status=True).order_by("subjectchapter")
+    questions_list1      = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,ques_level = "Medium",status=True).order_by("subjectchapter")
+    questions_list2      = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,ques_level = "Hard",status=True).order_by("subjectchapter")
     questions_contant   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first() 
 
     try :
-        if request.session['id']:
-            questions_contant_u = models.user_answer.objects.filter(question_id__subjectchapter_id__chapter_id__name=chapter_name,user_reg_id = request.session['id']).count()
-            
-            questions_contant1 = models.user_answer.objects.filter(question_id__subjectchapter_id__chapter_id__name=chapter_name, is_correct_ans='True' ,user_reg_id = request.session['id']).count()
-            if questions_contant1 == 0:
-                questions_contant1 = 1
-            if questions_contant_u == 0:
-                questions_contant_u = 1
-            percentage = questions_contant1 / questions_contant_u * 100
-            print(questions_contant1)
-            percentage = int(percentage)
-            
-            if questions_contant_u>25 and questions_contant_u<50 and percentage < 80:
-                questions_contant_e   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first()
-                print('xxx')
-                context={
-                    
-                    'questions_contant_e'    : questions_contant_e,
-                    'questions_list'    : questions_list,
-                    'questions_contant'    : questions_contant,
+        questions_contant_u = models.user_answer.objects.filter(question_id__subjectchapter_id__chapter_id__name=chapter_name,user_reg_id = request.session['id']).count()
+        
+        questions_contant1 = models.user_answer.objects.filter(question_id__subjectchapter_id__chapter_id__name=chapter_name, is_correct_ans='True' ,user_reg_id = request.session['id']).count()
+        if questions_contant1 == 0:
+            questions_contant1 = 1
+        if questions_contant_u == 0:
+            questions_contant_u = 1
+        percentage = questions_contant1 / questions_contant_u * 100
+        print(questions_contant1)
+        percentage = int(percentage)
+        
+        if questions_contant_u>25 and questions_contant_u<50 and percentage < 80:
+            questions_contant_e   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first()
+            print('xxx')
+            context={
+                
+                'questions_contant_e'    : questions_contant_e,
+                'questions_list'    : questions_list,
+                'questions_contant'    : questions_contant,
+            }
+            return render(request, "blogapp/question_list.html",context)
+        
+        if questions_contant_u>50 and percentage < 80:
+            questions_contant_e   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first()
+            questions_contant_video   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first()
+            print('yyy')
+            context={
+                'questions_contant_e'    : questions_contant_e,
+                'questions_contant_video'    : questions_contant_video,
+                'questions_list'    : questions_list,
+                'questions_contant'    : questions_contant,
                 }
-                return render(request, "blogapp/question_list.html",context)
-            
-            if questions_contant_u>50 and percentage < 80:
-                questions_contant_e   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first()
-                questions_contant_video   = models.question.objects.filter(subjectchapter_id__classsubject_id__classes_id__name=classes_name, subjectchapter_id__classsubject_id__subject_id__name=sub_name, subjectchapter_id__chapter_id__name=chapter_name,status=True).first()
-                print('yyy')
-                context={
-                    'questions_contant_e'    : questions_contant_e,
-                    'questions_contant_video'    : questions_contant_video,
-                    'questions_list'    : questions_list,
-                    'questions_contant'    : questions_contant,
-                    }
-                return render(request, "blogapp/question_list.html",context)
+            return render(request, "blogapp/question_list.html",context)
     except:
         pass
     context={
         'questions_contant_video'    : questions_contant_video,
         'questions_list'    : questions_list,
+        'questions_list1'    : questions_list1,
+        'questions_list2'    : questions_list2,
         'questions_contant'    : questions_contant,
 
 
