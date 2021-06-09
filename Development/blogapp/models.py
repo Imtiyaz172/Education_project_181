@@ -118,15 +118,13 @@ class subjectchapter(models.Model):
     name          = models.CharField(max_length=200,blank= True)
     chapter       = models.ForeignKey(chapter, on_delete=models.CASCADE)
     classsubject  = models.ForeignKey(classsubject, on_delete=models.CASCADE)
-    # learning_content  = RichTextUploadingField(blank=True)
-    Chapter_pdf   = models.FileField(upload_to="pdf/",blank= True)
+    # learning_content  = RichTextUploadingField(blank=True)  
     Chapter_video_1 = models.TextField(blank=True)
     Chapter_video_2 = models.TextField(blank=True)
     Chapter_video_3 = models.TextField(blank=True)
     Chapter_video_4 = models.TextField(blank=True)
     Chapter_video_5 = models.TextField(blank=True)
     Chapter_video_6 = models.TextField(blank=True)
-    Chapter_pdf_internet   = models.FileField(upload_to="pdf/",blank= True)
     status        = models.BooleanField(default = True)
 
     def __str__(self):
